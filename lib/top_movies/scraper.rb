@@ -1,7 +1,7 @@
 require 'pry'
 
 
-class FindAPark::Scraper
+class TopMovies::Scraper
 
   def self.scraped_data
     doc = Nokogiri::HTML(open("https://www.afi.com/100Years/movies.aspx"))
