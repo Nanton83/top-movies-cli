@@ -2,13 +2,13 @@ require 'pry'
 
 class TopMovies::Movie
 
-  attr_accessor :name :place
+  attr_accessor :title, :place
 
   @@all = []
 
     def initialize(name=nil)
       @place = place
-      @name = name
+      @title = title
       @@all << self
     end
 
