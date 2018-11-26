@@ -10,9 +10,12 @@ class TopMovies::Scraper
     doc.css(".lister-item-content").each do |movie_block|
       movie_block.css('.lister-item-header').each do |movie|
         movie_info = movie.text
-      binding.pry
+        movie_name = movie.css('a[href]').text
+        movies << {name: movie_name}
+
       end
     end
+    movies
   end
 
   # def self.get_movie
