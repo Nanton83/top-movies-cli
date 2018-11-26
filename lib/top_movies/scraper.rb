@@ -8,10 +8,9 @@ class TopMovies::Scraper
     doc = Nokogiri::HTML(open("https://www.imdb.com/list/ls000049962/"))
     movies = []
     doc.css(".lister-item-content").each do |movie_block|
-      movie_block.css('a').each do |movie|
-        binding.pry
-        movie_name = movie.text
-        movies << {name: movie_name}
+      movie_block.css('.lister-item-header').each do |movie|
+        movie_info = movie.text
+      binding.pry
       end
     end
   end
