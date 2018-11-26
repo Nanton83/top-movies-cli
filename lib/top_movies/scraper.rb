@@ -2,23 +2,25 @@ require 'pry'
 
 
 class TopMovies::Scraper
-  attr_accessor :title
+
 
   def self.scraped_data
     doc = Nokogiri::HTML(open("https://list25.com/the-25-best-movies-ever-made/"))
-    doc
+    movies = []
+    doc.css(".list-items")
+    binding.pry
   end
 
-  def self.get_movie
-    place = self.scraped_data.css('.item-header')
-  end
-
-  def self.movie_info
-    self.get_movie.each do |movie_group|
-      movie = TopMovies::Movie.new
-      movie.title = movie_group.css(".item-title").text
-    end
-  end
+  # def self.get_movie
+  #   place = self.scraped_data.css('.item-header')
+  # end
+  #
+  # def self.movie_info
+  #   self.get_movie.each do |movie_group|
+  #     movie = TopMovies::Movie.new
+  #     movie.title = movie_group.css(".item-title").text
+  #   end
+  # end
 
   # def self.make_movie
   #   self.get_movie_number.each do |place|

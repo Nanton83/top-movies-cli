@@ -1,4 +1,4 @@
-class FindAPark::CLI
+class TopMovies::CLI
 
   def call
     puts "Welcome to Top Movies!"
