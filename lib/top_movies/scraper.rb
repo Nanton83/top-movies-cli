@@ -7,8 +7,13 @@ class TopMovies::Scraper
   def self.scraped_data
     doc = Nokogiri::HTML(open("https://list25.com/the-25-best-movies-ever-made/"))
     movies = []
-    doc.css(".list-items")
-    binding.pry
+    doc.css(".list-items").each do |container|
+      container.css('.item-title').each do |movie|
+        movie_name = movie.text
+        movies << {name: movie_name}
+      end
+    end
+    movies
   end
 
   # def self.get_movie
