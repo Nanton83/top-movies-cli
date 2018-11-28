@@ -13,8 +13,6 @@ class TopMovies::Scraper
         movie_place = movie.css('span[class]')[0].text.gsub(/[.]/, "")
         movie_date = movie.css('span[class]')[1].text.gsub(/[()]/, "")
         movies << {name: movie_name, place: movie_place, date: movie_date}
-
-
       end
     end
     movies
