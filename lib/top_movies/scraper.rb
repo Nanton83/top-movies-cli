@@ -10,10 +10,10 @@ class TopMovies::Scraper
     doc.css(".lister-item-content").each do |movie_block|
       movie_block.css('.lister-item-header').each do |movie|
         movie_name = movie.css('a[href]').text
-        movie_place = movie.css('span[class]')[0].text
-        movie_date = movie.css('span[class]')[1].text
-        movies << {name: movie_name, place: movie_place}
-binding.pry
+        movie_place = movie.css('span[class]')[0].text.gsub(/[.]/, "")
+        movie_date = movie.css('span[class]')[1].text.gsub(/[()]/, "")
+        movies << {name: movie_name, place: movie_place, date: movie_date}
+
 
       end
     end
