@@ -9,9 +9,11 @@ class TopMovies::Scraper
     movies = []
     doc.css(".lister-item-content").each do |movie_block|
       movie_block.css('.lister-item-header').each do |movie|
-        movie_info = movie.text
         movie_name = movie.css('a[href]').text
-        movies << {name: movie_name}
+        movie_place = movie.css('span[class]')[0].text
+        movie_date = movie.css('span[class]')[1].text
+        movies << {name: movie_name, place: movie_place}
+binding.pry
 
       end
     end
