@@ -1,17 +1,14 @@
 class TopMovies::CLI
 
   def call
+    TopMovies::Scraper.new.create_movie
     puts "Welcome to Top Movies!"
-
-
+    lists_movies
   end
 
-  def lists_states
-    puts "We will show parks by state."
-      states = FindAPark::State.all_the_states_list
-      states.each_with_index do |state, idx|
-      puts "#{idx + 1}." "#{state}"
-    end
+  def lists_movies
+    puts "Here is a list of movies"
+    TopMovies::Movie.all
   end
 
   def valid_input?(input)
