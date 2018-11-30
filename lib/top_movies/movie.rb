@@ -15,7 +15,6 @@ class TopMovies::Movie
 
     def self.all
       @@all
-      binding.pry
     end
 
     def self.new_from_index(name, place, date)
