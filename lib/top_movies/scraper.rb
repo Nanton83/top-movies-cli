@@ -5,8 +5,12 @@ class TopMovies::Scraper
 
   def self.create_movie
     self.scraped_data.each do |movie|
-      TopMovies::Movie.new_from_index(movie)
-      # binding.pry
+      name = movie.fetch(:name)
+      place = movie.fetch(:place)
+      date = movie.fetch(:date)
+
+      TopMovies::Movie.new_from_index(name, place, date)
+
     end
   end
 

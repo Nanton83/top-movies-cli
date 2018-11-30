@@ -11,6 +11,9 @@ class TopMovies::CLI
     TopMovies::Movie.all
   end
 
+  def print_movie
+  end
+
   def valid_input?(input)
     input.include?(1..56)
     end

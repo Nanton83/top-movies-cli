@@ -18,8 +18,8 @@ class TopMovies::Movie
       binding.pry
     end
 
-    def self.new_from_index(movie)
-      self.new
+    def self.new_from_index(name, place, date)
+      self.new(name, place, date)
     end
 
 end
