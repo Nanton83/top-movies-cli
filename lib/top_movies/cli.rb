@@ -1,7 +1,7 @@
 class TopMovies::CLI
 
   def call
-    TopMovies::Scraper.new.create_movie
+    TopMovies::Scraper.create_movie
     puts "Welcome to Top Movies!"
     lists_movies
   end
