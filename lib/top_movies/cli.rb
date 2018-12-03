@@ -1,14 +1,14 @@
 class TopMovies::CLI
 
   def call
-    TopMovies::Scraper.create_movie
+    TopMovies::Scraper.new.create_movie
     puts "Welcome to Top Movies!"
     lists_movies
   end
 
   def lists_movies
     puts "Here is a list of movies"
-    TopMovies::Movie.all
+    puts TopMovies::Movie.doc
   end
 
 
