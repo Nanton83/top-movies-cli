@@ -19,19 +19,20 @@ class TopMovies::Scraper
   end
 
   def create_movie_index
-    self.scraped_data.css(".lister-item-content").each do |movie_block|
-        @puts = movie_block.css('.lister-item-header')
+    self.scraped_data.css(".lister-item-content")
+    # .each do |movie_block|
+    #     movie_block.css('.lister-item-header')
       # name = movie.fetch(:name)
       # place = movie.fetch(:place)
       # date = movie.fetch(:date)
  # binding.pry
       # TopMovies::Movie.new_from_index(movie_data)
-    end
-    @puts
   end
 
   def create_movie
-    create_movie_index.each do |movie_data|
+    self.create_movie_index.each do |movie_block|
+      movie_data = movie_block.css('.lister-item-header')
+      binding.pry
       TopMovies::Movie.new_from_index(movie_data)
 
     end
