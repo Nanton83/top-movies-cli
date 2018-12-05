@@ -29,9 +29,12 @@ class TopMovies::Movie
       @@all
     end
 
+    def self.find(id)
+    self.all[id-1]
+    end
+
     def self.doc
     @doc ||= Nokogiri::HTML(open(self.url))
-
     end
 
 

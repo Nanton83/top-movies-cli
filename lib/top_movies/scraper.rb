@@ -32,7 +32,6 @@ class TopMovies::Scraper
   def create_movie
     self.create_movie_index.each do |movie_block|
       movie_data = movie_block.css('.lister-item-header')
-      binding.pry
       TopMovies::Movie.new_from_index(movie_data)
 
     end
