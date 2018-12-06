@@ -3,16 +3,17 @@ class TopMovies::CLI
   def call
     TopMovies::Scraper.new.create_movie
     puts "Welcome to Top Movies!"
-    lists_movies
+    start_user_interaction
   end
 
-  def lists_movies
-    puts "We will list the top 100 movies 10 at a time."
+  def start_user_interaction
+    puts "We will list the top 100 movies rated by imdb"
     puts "Are you ready to begin?  Enter y/n"
     input = gets.strip.downcase
     if input == "y"
-      movie = TopMovies::Movie.find(5)
-      print_movie(movie)
+      list_movies
+      # movie = TopMovies::Movie.find(5)
+      # print_movie(movie)
     elsif input == "n"
       puts ""
       puts "Please visit us again to see more top 100 movies"
@@ -25,9 +26,26 @@ class TopMovies::CLI
     end
   end
 
-  def print_movie(movie)
-    puts "#{movie.name}"
-  end
+  def list_movies
+    puts "To see 1-10 enter 1"
+    puts "To see 11-20 enter 2"
+    puts "To see 21-30 enter 3"
+    puts "To see 31-40 enter 4"
+    puts "To see 41-50 enter 5"
+    puts "To see 51-60 enter 6"
+    puts "To see 61-70 enter 7"
+    puts "To see 71-80 enter 8"
+    puts "To see 81-90 enter 9"
+    puts "To see 91-100 enter 10"
+    input = gets.strip.to_i
+      if input == 5
+        movie = TopMovies::Movie.find(5)
+        puts "##{movie.place} #{movie.name} #{movie.date}"
+      else
+      exit
+      end
+      end
+
 
 
 end

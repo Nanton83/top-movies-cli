@@ -29,8 +29,8 @@ class TopMovies::Movie
       @@all
     end
 
-    def self.find(id)
-    self.all[id-1]
+    def self.find(user_input)
+    self.all[user_input-1]
     end
 
     def self.doc
