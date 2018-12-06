@@ -40,15 +40,23 @@ class TopMovies::CLI
 
     input = gets.strip.to_i
       if input.between?(1, 10)
-        range(input)
+        iterate_range(input)
       elsif !(input.between?(1, 10))
       puts "Houston, we have a problem with that input"
       list_movies
       end
     end
 
-  def range(input)
-      movie = TopMovies::Movie.find(1)
+  def iterate_range(input)
+    if input == 1
+      (1..10).each do |n|
+        print_range(n)
+      end
+    end
+  end
+
+  def print_range(input)
+      movie = TopMovies::Movie.find(input)
       puts "##{movie.place} #{movie.name} #{movie.date}"
   end
 
