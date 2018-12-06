@@ -22,7 +22,7 @@ class TopMovies::CLI
     else
       puts ""
       puts "Houston, we have a problem with that input"
-      lists_movies
+      start_user_interaction
     end
   end
 
@@ -37,15 +37,19 @@ class TopMovies::CLI
     puts "To see 71-80 enter 8"
     puts "To see 81-90 enter 9"
     puts "To see 91-100 enter 10"
+
     input = gets.strip.to_i
-      if input == 5
-        movie = TopMovies::Movie.find(5)
-        puts "##{movie.place} #{movie.name} #{movie.date}"
-      else
-      exit
+      if input.between?(1, 10)
+        range(input)
+      elsif !(input.between?(1, 10))
+      puts "Houston, we have a problem with that input"
+      list_movies
       end
-      end
+    end
 
-
+  def range(input)
+      movie = TopMovies::Movie.find(1)
+      puts "##{movie.place} #{movie.name} #{movie.date}"
+  end
 
 end
