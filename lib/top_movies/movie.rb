@@ -2,7 +2,7 @@ require 'pry'
 
 class TopMovies::Movie
 
-  attr_accessor :name, :place, :date, :url
+  attr_accessor :name, :place, :date, :url, :movie_summary
 
   @@all = []
 
@@ -11,8 +11,9 @@ class TopMovies::Movie
     movie_data.css('a[href]').text,
     movie_data.css('span[class]')[0].text.gsub(/[.]/, ""),
     movie_data.css('span[class]')[1].text.gsub(/[()]/, ""),
-    "https://www.theworlds50best.com#{movie_data.css("a").attribute("href").text}"
+    "https://www.imdb.com#{movie_data.css("a").attribute("href").text}"
     )
+
   end
 
 
@@ -33,7 +34,11 @@ class TopMovies::Movie
     self.all[user_input-1]
     end
 
-    def self.doc
+    def summary
+      @movie_summary ||= doc.css("div.summary_text").text
+    end
+
+    def doc
     @doc ||= Nokogiri::HTML(open(self.url))
     end
 

@@ -98,8 +98,12 @@ class TopMovies::CLI
 
   def print_range(input)
       movie = TopMovies::Movie.find(input)
-      puts "##{movie.place} #{movie.name} #{movie.date}"
+      puts "##{movie.place} #{movie.name} #{movie.date} #{movie.summary}"
     end
+
+  def print_summary
+    puts "#{movie.summary}"
+  end
 
 
   def restart
