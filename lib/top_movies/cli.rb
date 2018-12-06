@@ -2,12 +2,15 @@ class TopMovies::CLI
 
   def call
     TopMovies::Scraper.new.create_movie
+    puts ""
     puts "Welcome to Top Movies!"
     start_user_interaction
   end
 
   def start_user_interaction
+    puts ""
     puts "We will list the top 100 movies rated by imdb"
+    puts ""
     puts "Are you ready to begin?  Enter y/n"
     input = gets.strip.downcase
     if input == "y"
@@ -17,6 +20,7 @@ class TopMovies::CLI
     elsif input == "n"
       puts ""
       puts "Please visit us again to see more top 100 movies"
+      puts ""
       puts "Goodbye"
       exit
     else
@@ -89,6 +93,7 @@ class TopMovies::CLI
         print_range(n)
       end
     end
+    restart
   end
 
   def print_range(input)
@@ -105,6 +110,7 @@ class TopMovies::CLI
       elsif input == "n"
         puts ""
         puts "Please visit us again to see more top 100 movies"
+        puts ""
         puts "Goodbye"
         exit
       else
