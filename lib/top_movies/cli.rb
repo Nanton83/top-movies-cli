@@ -52,12 +52,66 @@ class TopMovies::CLI
       (1..10).each do |n|
         print_range(n)
       end
+    elsif input == 2
+      (11..20).each do |n|
+        print_range(n)
+      end
+    elsif input == 3
+      (21..30).each do |n|
+        print_range(n)
+      end
+    elsif input == 4
+      (31..40).each do |n|
+        print_range(n)
+      end
+    elsif input == 5
+      (41..50).each do |n|
+        print_range(n)
+      end
+    elsif input == 6
+      (51..60).each do |n|
+        print_range(n)
+      end
+    elsif input == 7
+      (61..70).each do |n|
+        print_range(n)
+      end
+    elsif input == 8
+      (71..80).each do |n|
+        print_range(n)
+      end
+    elsif input == 9
+      (81..90).each do |n|
+        print_range(n)
+      end
+    elsif input == 10
+      (91..100).each do |n|
+        print_range(n)
+      end
     end
   end
 
   def print_range(input)
       movie = TopMovies::Movie.find(input)
       puts "##{movie.place} #{movie.name} #{movie.date}"
+    end
+
+
+  def restart
+      puts "Would you like to start over?  Enter y/n"
+      input = gets.strip.downcase
+      if input == "y"
+        list_movies
+      elsif input == "n"
+        puts ""
+        puts "Please visit us again to see more top 100 movies"
+        puts "Goodbye"
+        exit
+      else
+        puts ""
+        puts "Houston, we have a problem with that input"
+          list_movies
+      end
   end
 
 end
