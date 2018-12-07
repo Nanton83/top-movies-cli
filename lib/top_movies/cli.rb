@@ -111,6 +111,7 @@ def print_summary
     movie = TopMovies::Movie.find(summary)
     puts ""
     puts "#{movie.summary}"
+    print_summary
   elsif input == "n"
       end
   restart
