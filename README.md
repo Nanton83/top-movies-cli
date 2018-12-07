@@ -1,10 +1,10 @@
 # Top::Movies::Cli
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/top/movies/cli`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+The Top Movies CLI is a command line interface that allows the user to answer very simple questions to get information about the top 100 movies of all time.  The information is scraped from the web address https://www.imdb.com/list/ls000049962/ as well as each individual movies imdb web address.
 
 ## Installation
+
+To install this CLI simply type 'cd top-movies-cli' in order to communicate with the correct files.  Once you are in the top-movies-cli directory 'bundle install' and then in the command line type 'ruby top-movies' to begin.
 
 Add this line to your application's Gemfile:
 
