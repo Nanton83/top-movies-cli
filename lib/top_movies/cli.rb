@@ -93,35 +93,46 @@ class TopMovies::CLI
         print_range(n)
       end
     end
-    restart
+    print_summary
   end
 
   def print_range(input)
-      movie = TopMovies::Movie.find(input)
-      puts "##{movie.place} #{movie.name} #{movie.date} #{movie.summary}"
-    end
+    movie = TopMovies::Movie.find(input)
+    puts "##{movie.place} #{movie.name} #{movie.date}"
+  end
 
-  def print_summary
+def print_summary
+  puts "Would you like to see a movies summary? Enter y/n"
+  input = gets.strip.downcase
+    if input == "y"
+    puts ""
+    puts "Please enter the movies position on the top 100 chart."
+    summary = gets.strip.to_i
+    movie = TopMovies::Movie.find(summary)
+    puts ""
     puts "#{movie.summary}"
-  end
-
-
-  def restart
-      puts "Would you like to start over?  Enter y/n"
-      input = gets.strip.downcase
-      if input == "y"
-        list_movies
-      elsif input == "n"
-        puts ""
-        puts "Please visit us again to see more top 100 movies"
-        puts ""
-        puts "Goodbye"
-        exit
-      else
-        puts ""
-        puts "Houston, we have a problem with that input"
-          list_movies
+  elsif input == "n"
       end
-  end
+  restart
+end
+
+
+def restart
+    puts "Would you like to start over?  Enter y/n"
+    input = gets.strip.downcase
+    if input == "y"
+      list_movies
+    elsif input == "n"
+      puts ""
+      puts "Please visit us again to see more top 100 movies"
+      puts ""
+      puts "Goodbye"
+      exit
+    else
+      puts ""
+      puts "Houston, we have a problem with that input"
+        list_movies
+    end
+end
 
 end
