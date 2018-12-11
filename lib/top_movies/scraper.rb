@@ -5,35 +5,21 @@ class TopMovies::Scraper
 
   def scraped_data
   Nokogiri::HTML(open("https://www.imdb.com/list/ls000049962/"))
-  # movies = []
-    # doc.css(".lister-item-content").each do |movie_block|
-    #   movie_block.css('.lister-item-header')
-        # movie_name = movie.css('a[href]').text
-        # movie_place = movie.css('span[class]')[0].text.gsub(/[.]/, "")
-        # movie_date = movie.css('span[class]')[1].text.gsub(/[()]/, "")
-        # movies << {
-        #   name: movie_name,
-        #   place: movie_place,
-        #   date: movie_date
-        # }
+
   end
 
   def create_movie_index
     self.scraped_data.css(".lister-item-content")
-    # .each do |movie_block|
-    #     movie_block.css('.lister-item-header')
-      # name = movie.fetch(:name)
-      # place = movie.fetch(:place)
-      # date = movie.fetch(:date)
- # binding.pry
-      # TopMovies::Movie.new_from_index(movie_data)
   end
 
   def create_movie
     self.create_movie_index.each do |movie_block|
       movie_data = movie_block.css('.lister-item-header')
-      TopMovies::Movie.new_from_index(movie_data)
-
+      name = movie_data.css('a[href]').text
+      place = movie_data.css('span[class]')[0].text.gsub(/[.]/, "")
+      date = movie_data.css('span[class]')[1].text.gsub(/[()]/, "")
+      url = "https://www.imdb.com#{movie_data.css("a").attribute("href").text}"
+      TopMovies::Movie.new(name,place,date,url)
     end
   end
 
