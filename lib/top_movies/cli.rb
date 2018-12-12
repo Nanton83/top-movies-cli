@@ -113,7 +113,12 @@ def print_summary
     puts "#{movie.summary}"
     print_summary
   elsif input == "n"
-      end
+    self.restart
+  else
+    puts ""
+    puts "Houston, we have a problem with that input"
+  print_summary
+  end
   restart
 end
 

@@ -6,17 +6,6 @@ class TopMovies::Movie
 
   @@all = []
 
-  # def self.new_from_index(movie_data)
-  #   self.new(
-  #   movie_data.css('a[href]').text,
-  #   movie_data.css('span[class]')[0].text.gsub(/[.]/, ""),
-  #   movie_data.css('span[class]')[1].text.gsub(/[()]/, ""),
-  #   "https://www.imdb.com#{movie_data.css("a").attribute("href").text}"
-  #   )
-  # end
-
-
-
     def initialize(name=nil, place=nil, date=nil, summary=nil)
       @name = name
       @place = place
