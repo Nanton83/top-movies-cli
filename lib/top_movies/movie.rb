@@ -2,7 +2,7 @@ require 'pry'
 
 class TopMovies::Movie
 
-  attr_accessor :name, :place, :date, :url, :movie_summary
+  attr_accessor :name, :place, :date, :url, :summary
 
   @@all = []
 
@@ -17,11 +17,11 @@ class TopMovies::Movie
 
 
 
-    def initialize(name=nil, place=nil, date=nil, url=nil)
+    def initialize(name=nil, place=nil, date=nil, summary=nil)
       @name = name
       @place = place
       @date = date
-      @url = url
+      @summary = summary
       @@all << self
     end
 
@@ -33,13 +33,13 @@ class TopMovies::Movie
     self.all[user_input-1]
     end
 
-    def summary
-      @movie_summary ||= doc.css("div.summary_text").text
-    end
-
-    def doc
-    @doc ||= Nokogiri::HTML(open(self.url))
-    end
+    # def summary
+    #   @movie_summary ||= doc.css("div.summary_text").text
+    # end
+    #
+    # def doc
+    # @doc ||= Nokogiri::HTML(open(self.url))
+    # end
 
 
 end

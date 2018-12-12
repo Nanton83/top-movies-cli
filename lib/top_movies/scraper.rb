@@ -18,8 +18,9 @@ class TopMovies::Scraper
       name = movie_data.css('a[href]').text
       place = movie_data.css('span[class]')[0].text.gsub(/[.]/, "")
       date = movie_data.css('span[class]')[1].text.gsub(/[()]/, "")
-      url = "https://www.imdb.com#{movie_data.css("a").attribute("href").text}"
-      TopMovies::Movie.new(name,place,date,url)
+      doc = Nokogiri::HTML(open("https://www.imdb.com#{movie_data.css("a").attribute("href").text}"))
+      summary = doc.css("div.summary_text").text
+      TopMovies::Movie.new(name,place,date,summary)
     end
   end
 
