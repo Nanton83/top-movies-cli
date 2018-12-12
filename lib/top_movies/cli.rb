@@ -106,11 +106,7 @@ def print_summary
   input = gets.strip.downcase
     if input == "y"
     puts ""
-    puts "Please enter the movies position on the top 100 chart."
-    summary = gets.strip.to_i
-    movie = TopMovies::Movie.find(summary)
-    puts ""
-    puts "#{movie.summary}"
+    self.get_summary
     print_summary
   elsif input == "n"
     self.restart
@@ -120,6 +116,20 @@ def print_summary
   print_summary
   end
   restart
+end
+
+def get_summary
+    puts "Please enter the movies position on the top 100 chart.  (1-100)"
+    summary = gets.strip.to_i
+    if summary.between?(1,100)
+    movie = TopMovies::Movie.find(summary)
+    puts ""
+    puts "#{movie.summary}"
+  else
+    puts "Houston, we have a problem with that input"
+    self.print_summary
+  end
+  self.print_summary
 end
 
 
